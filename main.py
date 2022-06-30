@@ -55,7 +55,7 @@ def listaUsuarios():
     else:
         print ("Nenhum Usuário Cadastrado!!-------------------------------------------\n")
 
-    print ("| Any Key : Voltar                                            |\n")
+    print ("| Enter : Voltar                                            |\n")
     opc = input(': ')
 
     menu()
@@ -97,7 +97,7 @@ def alteraSenha():
             listaUsuarios()
     else:
         print("Nenhum Usuário Cadastrado! ------------------------------------")
-        print("| Any Key : Voltar                                            |\n")
+        print("| Enter : Voltar                                            |\n")
         opc = input(': ')
 
         menu()
@@ -135,7 +135,7 @@ def excluiUsuario():
             listaUsuarios()
     else:
         print("Nenhum Usuário Cadastrado! ------------------------------------")
-        print("| Any Key : Voltar                                            |\n")
+        print("| Enter : Voltar                                            |\n")
         opc = input(': ')
 
         menu()
@@ -174,4 +174,5 @@ def menu():
         excluiUsuario()
 
 
-menu()
+if __name__  == "__main__":
+    menu()
