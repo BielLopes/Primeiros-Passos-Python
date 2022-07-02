@@ -40,7 +40,7 @@ def cadastrar_usuario():
     TodosUser[conta_id] = novo
 
     print("Usuário Cadastrado Com Sucesso")
-    menu()
+    
 
 
 def listaUsuarios():
@@ -50,15 +50,15 @@ def listaUsuarios():
 
     if len(TodosUser) >= 1:
         for id in TodosUser:
-            TodosUser[id].exibe_dados()
+            print(TodosUser[id])
             print("\n\n")
     else:
         print ("Nenhum Usuário Cadastrado!!-------------------------------------------\n")
 
     print ("| Enter : Voltar                                            |\n")
-    opc = input(': ')
+    input(': ')
 
-    menu()
+    
 
 
 def alteraSenha():
@@ -74,16 +74,16 @@ def alteraSenha():
                 print ("Opcção invalida, Tente Novamente----------------------------------------------------\n")
 
         if opc == 0:
-            menu()
+            return
 
         elif opc == 1:
             opc = int(input('ID do Usuario: '))
             if opc in TodosUser:
-                print('Alterando A Senha de '+TodosUser[opc].get_name())
+                print('Alterando A Senha de '+TodosUser[opc].nome())
                 novaSenha = input('Digite a nova Senha: ')
                 while senha_curta(novaSenha):
                     novaSenha = input("Senha muito pequene, digite outra: ")
-                TodosUser[opc].set_senha(novaSenha)
+                TodosUser[opc].senha = novaSenha
                 print("Senha Alterada com sucesso!!!------------------------------------------\n")
             else:
                 print("O Usuario Selecionado não Existe!!---------------------------------------\n")
@@ -100,7 +100,7 @@ def alteraSenha():
         print("| Enter : Voltar                                            |\n")
         opc = input(': ')
 
-        menu()
+        return
 
 
 def excluiUsuario():
@@ -117,7 +117,7 @@ def excluiUsuario():
 
         if opc == 0:
             print ("\n\n")
-            menu()
+            return
 
         elif opc == 1:
             opc = int(input('ID do Usuario: '))
@@ -138,40 +138,41 @@ def excluiUsuario():
         print("| Enter : Voltar                                            |\n")
         opc = input(': ')
 
-        menu()
+        return
 
 
 def menu():
-    print ("Bem Visndo ao Sistema de GERENCIAMENTO DE USUÀRIOS \n")
-    print ("Escolha uma das opções abaixo: \n")
-    print ("----------------------------------------------------------\n")
-    print ("| 1 : Cadastrar um Usuário                               |\n")
-    print ("| 2 : Listar Usuários                                    |\n")
-    print ("| 3 : Alterar Senha de Um Usuário                        |\n")
-    print ("| 4 : Excluir um Usuário                                 |\n")
-    print ("| 0 : Sair                                               |\n")
-    print ("----------------------------------------------------------\n")
-    opc = -1
+    while True:
+        print ("Bem Visndo ao Sistema de GERENCIAMENTO DE USUÀRIOS \n")
+        print ("Escolha uma das opções abaixo: \n")
+        print ("----------------------------------------------------------\n")
+        print ("| 1 : Cadastrar um Usuário                               |\n")
+        print ("| 2 : Listar Usuários                                    |\n")
+        print ("| 3 : Alterar Senha de Um Usuário                        |\n")
+        print ("| 4 : Excluir um Usuário                                 |\n")
+        print ("| 0 : Sair                                               |\n")
+        print ("----------------------------------------------------------\n")
+        opc = -1
 
-    while opc < 0 or opc > 4:
-        opc = int(input('Opção: '))
-        if opc <0 or opc > 4:
-            print("Opcção invalida, Tente Novamente\n")
+        while opc < 0 or opc > 4:
+            opc = int(input('Opção: '))
+            if opc <0 or opc > 4:
+                print("Opcção invalida, Tente Novamente\n")
 
-    if opc == 0:
-        exit()
+        if opc == 0:
+            break
 
-    elif opc == 1:
-        cadastrar_usuario()
+        elif opc == 1:
+            cadastrar_usuario()
 
-    elif opc == 2:
-        listaUsuarios()
+        elif opc == 2:
+            listaUsuarios()
 
-    elif opc == 3:
-        alteraSenha()
+        elif opc == 3:
+            alteraSenha()
 
-    elif opc == 4:
-        excluiUsuario()
+        elif opc == 4:
+            excluiUsuario()
 
 
 if __name__  == "__main__":
